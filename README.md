@@ -13,4 +13,9 @@ optimize this trajectory containing the intermediate points (guess points) in su
 either tangentially to the circles or away from the circles as well as pass in between the walls as it tries
 to go from the left to the right side of the room.
 
+* Implement a constraint function inside the room having just one circle and one guess point.
+* Introduce 2 circles with 5 intermediate points and test the results.
+* Introduce 4 circles with 7 intermediate points and test the results.
+* The rectangular walls can now be introduced with two set of circles on the left side of the room and two others on the right side. Additional constraints must be defined in order to make the trajectory pass perfectly in the area between the walls.
+
 
