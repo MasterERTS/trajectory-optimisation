@@ -31,8 +31,11 @@ Lb = [0; 0];
 Ub = [10; 10];
 x0 = P;
 
+objective = @(x) objective_min(x, A, B);
+constr = @(x) constraints(x, A, B, center, radius);
+
 options = optimset('Display', 'iter', 'TolX', 1*exp(-6), 'TolFun', 1*exp(-6), 'MaxIter', 100, 'MaxFunEvals', 300);
-f = fmincon(@objective_min, x0, [], [], [], [], Lb, Ub, @constraints, options);
+x = fmincon(@(x)objective, x0, [], [], [], [], Lb, Ub, @(x)constr, options);
 
 
 % Functions
@@ -51,10 +54,10 @@ function [g h] = constraints(x, A, B, center, radius)
     n = 0:0.01:1; % Discretize
     for i=1:length(M)-1 % for all segments
         for j=1:length(n) % for all points discretize on those segments
-            Xi = M(i,:) + n(j)*(M(i+1,:)-M(i,:));
+            Xi = M(i,:) + n(j)*(M(i+1,:) - M(i,:));
             dist(j,1) = norm(Xi-center);
         end
-        g(i)=radius-min(dist(:,1));
+        g(i)= radius - min(dist(:,1));
     end
 
     h=[];
