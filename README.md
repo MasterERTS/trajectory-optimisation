@@ -1,5 +1,8 @@
 # Trajectory Optimisation
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/master-coro/trajectory-optimisation/master/traj_opt.JPG"
+</p>
 
 The room has obstacles in the form of four circles of definite radii and
 centers. Two rectangular walls, each of size 4x2 with their origins at (4, 0) and (4, 6) separates the test
