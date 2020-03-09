@@ -1,7 +1,7 @@
 # Trajectory Optimisation
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/master-coro/trajectory-optimisation/master/traj_opt.JPG"
+<img src="https://raw.githubusercontent.com/master-coro/trajectory-optimisation/master/res/traj_opt.JPG"
 </p>
 
 The room has obstacles in the form of four circles of definite radii and
