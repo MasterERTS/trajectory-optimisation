@@ -6,21 +6,16 @@ close all;
 % Initial Situation
 
 % Guess Points
-A = [1 1];
-B = [8 2];
+A = [1 2];
+B = [8 9];
 
 % Reference Points
-Ps = generatePoints(5);
+Ps = generatePoints(10);
 size(Ps)
 
 % Centers
-c = [2, 4];
-c2 = [8, 7];
-c3 = [8, 3];
+Cs = generatePoints(2);
 radius = 1;
-
-% Array of centers
-Cs = [c, c2, c3];
 
 % Plot Grid
 figure(1);
@@ -64,10 +59,10 @@ Lb = [];
 Ub = [];
 
 for index=1:2:(length(Ps))
-    if (index/length(Ps) < 0.30)
+    if (index/length(Ps) < 0.33)
         Lb = [Lb, 0, 0];
         Ub = [Ub, 4, 10];
-    elseif (index/length(Ps) > 0.70)
+    elseif (index/length(Ps) > 0.66)
         Lb = [Lb, 6, 0];
         Ub = [Ub, 10, 10];    
     else
