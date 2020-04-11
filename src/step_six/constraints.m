@@ -16,6 +16,7 @@ function [g h] = constraints(x, A, B, Cs, radius)
             for j=1:length(n) % for all points discretize on those segments
                 Xi = M(i,:) + n(j)*(M(i+1,:) - M(i,:));
                 dist(j,1) = norm(Xi - centers(k, :));
+                
             end
             p = p+1;
             g(p) = radius - min(dist(:,1));

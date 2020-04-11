@@ -6,16 +6,26 @@ close all;
 % Initial Situation
 
 % Guess Points
-A = [1 2];
+A = [1 7];
 B = [8 9];
 
 % Reference Points
-Ps = generatePoints(10);
-size(Ps)
+Ps = generatePoints(8);
 
 % Centers
-Cs = generatePoints(2);
-radius = 1;
+C = [5, 6.3];
+C2 = [5, 3.7];
+C3 = [5, 8];
+C4 = [5, 9];
+C5 = [5, 10];
+C6 = [5, 2];
+C7 = [5, 1];
+C8 = [5, 0];
+Crect = [C, C2, C3, C4, C5, C6, C7, C8];
+Cg = generatePoints(3);
+
+Cs = [Crect, Cg];
+radius = 0.7;
 
 % Plot Grid
 figure(1);
@@ -34,8 +44,8 @@ rectangle('Position',[4 0 2 4], 'EdgeColor', 'r', 'LineWidth', 2, 'FaceColor',[0
 rectangle('Position',[4 6 2 4], 'EdgeColor', 'r', 'LineWidth', 2, 'FaceColor',[0.9 0.9 0.9]);
 
 % Plot Circles
-for iter=1:2:length(Cs)
-    circle = [Cs(iter), Cs(iter+1)];
+for iter=1:2:length(Cg)
+    circle = [Cg(iter), Cg(iter+1)];
     viscircles(circle, radius, 'Color', 'r', 'LineWidth', 1);
 end
 
@@ -71,8 +81,6 @@ for index=1:2:(length(Ps))
     end      
 end
 
-Lb
-Ub
 x0 = Ps;
 
 obj = @(x)objective(x, A, B);
@@ -96,13 +104,17 @@ for iter=1:2:length(lines)-2
 end
 
 function p = randomPoint()
-    rdn_x = round(10*rand);
-    rdn_y = round(10*rand);
+    rdn_x = 10*rand;
+    rdn_y = 10*rand;
+    while((rdn_y <= 4 && rdn_x <= 6 && rdn_x >= 4) || (rdn_y >= 6 && rdn_x <= 6 && rdn_x >= 4))
+        rdn_x = 10*rand;
+        rdn_y = 10*rand;
+    end
     p = [rdn_x, rdn_y];
 end
 
 function pts = generatePoints(n)
-    pts = []
+    pts = [];
     for i=1:n
         pt = randomPoint();
         res = ismember(pt, pts);
